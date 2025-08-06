@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
@@ -38,6 +37,16 @@
             transform: scale(1.05);
         }
 
+        /* Fade-in and Fade-out animations for the rotating text */
+        .fade-out {
+            opacity: 0;
+            transition: opacity 1.5s ease-out;
+        }
+        .fade-in {
+            opacity: 1;
+            transition: opacity 1.5s ease-in;
+        }
+
 
         /* Enhanced responsive utilities */
         @media (max-width: 640px) {
@@ -56,6 +65,33 @@
             min-height: 44px;
             min-width: 44px;
         }
+
+        /* Whatsapp Icon */
+        .whatsapp-icon {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        .whatsapp-icon:hover {
+            transform: scale(1.1);
+        }
+        .whatsapp-icon img {
+            width: 35px;
+            height: 35px;
+        }
+
     </style>
 </head>
 <body class="bg-gray-50">
@@ -66,7 +102,7 @@
 <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
 <span class="text-white font-bold text-lg sm:text-xl">VW</span>
 </div>
-<span class="ml-2 sm:ml-3 text-lg sm:text-2xl font-bold text-gray-800 truncate">VickyWork</span>
+<span class="ml-2 sm:ml-3 text-lg sm:text-2xl font-bold text-gray-800 truncate" data-key="companyName">VickyWork</span>
 </div>
 <nav class="hidden lg:flex space-x-6 xl:space-x-8">
 <a class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 whitespace-nowrap" data-key="home" href="#accueil">Accueil</a>
@@ -113,14 +149,13 @@
 <section class="gradient-bg min-h-screen flex items-center justify-center pt-16 sm:pt-20" id="accueil">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 <div>
-<h1 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2" id="hero-title">
+<h1 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2" data-key="heroTitle">
                     Bienvenue sur le site officiel de
                     <span class="text-gradient block sm:inline mt-2 sm:mt-0">VickyWork</span>
 </h1>
-<p class="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-4 min-h-[3rem] sm:min-h-[4rem] text-center transition-opacity duration-500" data-key="heroSubtitle" id="rotating-text">
+<p class="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-4 text-center transition-opacity duration-500" data-key="heroSubtitle" id="rotating-text">
     Explorez, Découvrez, <span class="font-bold text-yellow-300">Appréciez</span> nos services
 </p>
-
 <div class="flex flex-col sm:flex-row gap-4 sm:gap-4 justify-center items-center px-4">
 <a class="w-full sm:w-auto bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover-scale hover:shadow-xl transition-all duration-300 text-center" data-key="discoverServices" href="#services">
                         Découvrez nos services
@@ -299,7 +334,7 @@
 <div class="w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full mx-auto mb-6 flex items-center justify-center shadow-lg">
 <span class="text-white text-2xl sm:text-3xl lg:text-4xl font-bold">VW</span>
 </div>
-<h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-3">Victoria Williams</h3>
+<h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-3" data-key="victoriaWilliamsName">Victoria Williams</h3>
 <p class="text-blue-600 font-semibold mb-3 text-base sm:text-lg" data-key="ceoTitle">CEO &amp; Fondatrice</p>
 <p class="text-gray-600 text-sm sm:text-base leading-relaxed" data-key="ceoDesc">Experte en stratégie d'entreprise avec 15 ans d'expérience</p>
 </div>
@@ -307,7 +342,7 @@
 <div class="w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40 bg-gradient-to-br from-blue-400 to-green-400 rounded-full mx-auto mb-6 flex items-center justify-center shadow-lg">
 <span class="text-white text-2xl sm:text-3xl lg:text-4xl font-bold">JD</span>
 </div>
-<h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-3">Jean Dupont</h3>
+<h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-3" data-key="jeanDupontName">Jean Dupont</h3>
 <p class="text-blue-600 font-semibold mb-3 text-base sm:text-lg" data-key="ctoTitle">Directeur Technique</p>
 <p class="text-gray-600 text-sm sm:text-base leading-relaxed" data-key="ctoDesc">Architecte logiciel passionné par l'innovation technologique</p>
 </div>
@@ -330,11 +365,11 @@
 <figure class="text-center px-4 pb-12">
 <div class="w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
 <div class="w-full h-full bg-gray-200 flex items-center justify-center">
-<span class="text-gray-500 text-xs">Image</span>
+<span class="text-gray-500 text-xs" data-key="imagePlaceholder">Image</span>
 </div>
 </div>
 <figcaption>
-<h3 class="nom text-lg sm:text-xl font-bold text-gray-800 mb-2">AGANZE NAMEGABE David</h3>
+<h3 class="nom text-lg sm:text-xl font-bold text-gray-800 mb-2" data-key="davidName">AGANZE NAMEGABE David</h3>
 <p class="titre text-blue-600 font-semibold mb-6 text-sm sm:text-base" data-key="legalDirector">Directeur Juridique</p>
 </figcaption>
 </figure>
@@ -343,11 +378,11 @@
 <figure class="text-center px-4 pb-12">
 <div class="w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 bg-gradient-to-br from-green-500 to-teal-600 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
 <div class="w-full h-full bg-gray-200 flex items-center justify-center">
-<span class="text-gray-500 text-xs">Image</span>
+<span class="text-gray-500 text-xs" data-key="imagePlaceholder">Image</span>
 </div>
 </div>
 <figcaption>
-<h3 class="nom text-lg sm:text-xl font-bold text-gray-800 mb-2">NDAGANO BARHAZIGIRANDI Projet</h3>
+<h3 class="nom text-lg sm:text-xl font-bold text-gray-800 mb-2" data-key="projetName">NDAGANO BARHAZIGIRANDI Projet</h3>
 <p class="titre text-blue-600 font-semibold mb-6 text-sm sm:text-base" data-key="webDirector">Directeur Web</p>
 </figcaption>
 </figure>
@@ -356,11 +391,11 @@
 <figure class="text-center px-4 pb-12">
 <div class="w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
 <div class="w-full h-full bg-gray-200 flex items-center justify-center">
-<span class="text-gray-500 text-xs">Image</span>
+<span class="text-gray-500 text-xs" data-key="imagePlaceholder">Image</span>
 </div>
 </div>
 <figcaption>
-<h3 class="nom text-lg sm:text-xl font-bold text-gray-800 mb-2">NDONDE MAHINDUZI Plamedi</h3>
+<h3 class="nom text-lg sm:text-xl font-bold text-gray-800 mb-2" data-key="plamediName">NDONDE MAHINDUZI Plamedi</h3>
 <p class="titre text-blue-600 font-semibold mb-6 text-sm sm:text-base" data-key="externalMobilizationDirector">Directeur Mobilisation Externe &amp; Communication</p>
 </figcaption>
 </figure>
@@ -369,11 +404,11 @@
 <figure class="text-center px-4 pb-12">
 <div class="w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 bg-gradient-to-br from-orange-500 to-red-600 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
 <div class="w-full h-full bg-gray-200 flex items-center justify-center">
-<span class="text-gray-500 text-xs">Image</span>
+<span class="text-gray-500 text-xs" data-key="imagePlaceholder">Image</span>
 </div>
 </div>
 <figcaption>
-<h3 class="nom text-lg sm:text-xl font-bold text-gray-800 mb-2">MUKUBIZA MUNGUAMPIRE Sylvain</h3>
+<h3 class="nom text-lg sm:text-xl font-bold text-gray-800 mb-2" data-key="sylvainName">MUKUBIZA MUNGUAMPIRE Sylvain</h3>
 <p class="titre text-blue-600 font-semibold mb-6 text-sm sm:text-base" data-key="trainingDirector">Directeur de Formation</p>
 </figcaption>
 </figure>
@@ -382,7 +417,7 @@
 <div class="swiper-pagination mt-6"></div>
 </div>
 <div class="text-center mt-6" id="pauseButtonContainer" style="display: none;">
-<button class="pause-btn bg-blue-500 text-white px-6 py-2 rounded-lg text-sm hover-scale hover:bg-blue-600 transition-colors duration-300" onclick="toggleAutoplay()">Pause</button>
+<button class="pause-btn bg-blue-500 text-white px-6 py-2 rounded-lg text-sm hover-scale hover:bg-blue-600 transition-colors duration-300" data-key="pause" onclick="toggleAutoplay()">Pause</button>
 </div>
 </div>
 </div>
@@ -463,7 +498,7 @@
 <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
 <span class="text-white font-bold text-sm sm:text-base">VW</span>
 </div>
-<span class="ml-3 text-lg sm:text-xl font-bold">VickyWork</span>
+<span class="ml-3 text-lg sm:text-xl font-bold" data-key="companyName">VickyWork</span>
 </div>
 <p class="text-gray-400 text-sm sm:text-base leading-relaxed" data-key="footerDesc">Votre partenaire de confiance pour tous vos projets professionnels.</p>
 </div>
@@ -505,6 +540,9 @@
 </div>
 </div>
 </footer>
+<a aria-label="Chat on WhatsApp" class="whatsapp-icon" href="https://wa.me/243996970424" target="_blank">
+<img alt="WhatsApp" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"/>
+</a>
 <script>
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -539,10 +577,18 @@
                 team: "Notre équipe",
                 contact: "Contact",
                 support: "Soutenez-Nous",
+                companyName: "VickyWork",
                 
                 // Hero section
                 heroTitle: "Bienvenue sur le site officiel de <span class='text-gradient'>VickyWork</span>",
                 heroSubtitle: "Explorez, Découvrez, <span class='font-bold text-yellow-300'>  Appréciez</span> nos services ",
+                rotatingTexts: [
+                    "\"Tout seul on va plus vite, ensemble on va plus loin\"",
+                    "\"Une seule main ne peut pas attacher un paquet.\"",
+                    "\"Un enfant qu’on n’éduque pas est un adulte qu’on punit.\"",
+                    "\"La connaissance est une richesse qu’aucun voleur ne peut voler.\"",
+                    "\"L’intelligence collective bâtit les grandes fondations \""
+                ],
                 discoverServices: "Découvrez nos services",
                 
                 // Video section
@@ -579,15 +625,23 @@
                 // Team section
                 teamTitle: "Notre équipe",
                 teamSubtitle: "Rencontrez les experts passionnés qui donnent vie à vos projets",
+                victoriaWilliamsName: "Victoria Williams",
+                jeanDupontName: "Jean Dupont",
                 ceoTitle: "CEO & Fondatrice",
                 ceoDesc: "Experte en stratégie d'entreprise avec 15 ans d'expérience",
                 ctoTitle: "Directeur Technique",
                 ctoDesc: "Architecte logiciel passionné par l'innovation technologique",
                 otherMembers: "Autres membres",
+                davidName: "AGANZE NAMEGABE David",
                 legalDirector: "Directeur Juridique",
+                projetName: "NDAGANO BARHAZIGIRANDI Projet",
                 webDirector: "Directeur Web",
+                plamediName: "NDONDE MAHINDUZI Plamedi",
                 externalMobilizationDirector: "Directeur Mobilisation Externe & Communication",
+                sylvainName: "MUKUBIZA MUNGUAMPIRE Sylvain",
                 trainingDirector: "Directeur de Formation",
+                pause: "Pause",
+                imagePlaceholder: "Image",
 
                 // Contact section
                 contactTitle: "Contactez-nous",
@@ -630,10 +684,18 @@
                 team: "Our Team",
                 contact: "Contact",
                 support: "Support Us",
+                companyName: "VickyWork",
                 
                 // Hero section
                 heroTitle: "Welcome to the official website of <span class='text-gradient'>VickyWork</span>",
                 heroSubtitle: "Explore, Discover, <span class='font-bold text-yellow-300'>Enjoy</span> our  services",
+                rotatingTexts: [
+                    "\"Alone we go faster, together we go further\"",
+                    "\"A single hand cannot tie a package.\"",
+                    "\"A child who is not educated is an adult who is punished.\"",
+                    "\"Knowledge is a wealth that no thief can steal.\"",
+                    "\"Collective intelligence builds great foundations \""
+                ],
                 discoverServices: "Discover Our Services",
                 
                 // Video section
@@ -670,15 +732,23 @@
                 // Team section
                 teamTitle: "Our Team",
                 teamSubtitle: "Meet the passionate experts who bring your projects to life",
+                victoriaWilliamsName: "Victoria Williams",
+                jeanDupontName: "Jean Dupont",
                 ceoTitle: "CEO & Founder",
                 ceoDesc: "Business strategy expert with 15 years of experience",
                 ctoTitle: "Technical Director",
                 ctoDesc: "Software architect passionate about technological innovation",
                 otherMembers: "Other Members",
+                davidName: "AGANZE NAMEGABE David",
                 legalDirector: "Legal Director",
+                projetName: "NDAGANO BARHAZIGIRANDI Projet",
                 webDirector: "Web Director",
+                plamediName: "NDONDE MAHINDUZI Plamedi",
                 externalMobilizationDirector: "Director of External Mobilization and Communication",
+                sylvainName: "MUKUBIZA MUNGUAMPIRE Sylvain",
                 trainingDirector: "Training Director",
+                pause: "Pause",
+                imagePlaceholder: "Image",
                 
                 // Contact section
                 contactTitle: "Contact Us",
@@ -721,10 +791,18 @@
                 team: "Nuestro Equipo",
                 contact: "Contacto",
                 support: "Apóyanos",
+                companyName: "VickyWork",
                 
                 // Hero section
                 heroTitle: "Bienvenido al sitio oficial de <span class='text-gradient'>VickyWork</span>",
                 heroSubtitle: "Explora, Descubre, <span class='font-bold text-yellow-300'>Disfruta</span> de nuestros servicios",
+                rotatingTexts: [
+                    "\"Solo vamos más rápido, juntos llegamos más lejos\"",
+                    "\"Una sola mano no puede atar un paquete.\"",
+                    "\"Un niño que no se educa es un adulto que se castiga.\"",
+                    "\"El conocimiento es una riqueza que ningún ladrón puede robar.\"",
+                    "\"La inteligencia colectiva construye grandes cimientos \""
+                ],
                 discoverServices: "Descubre nuestros servicios",
                 
                 // Video section
@@ -754,22 +832,30 @@
                 
                 // Projects section
                 ourProjectsTitle: "Nuestros Proyectos",
-                resolmathDescription: "<span class='text-blue-600 font-extrabold text-xl'>ResolMATH</span>, un proyecto en desarrollo destinado a ayudar a escolares, estudiantes y entusiastas de las matemáticas a comprender y resolver, paso a paso, una gran variedad de problemas matemáticos: ecuaciones, matrices, trigonometría y mucho más.",
+                resolmathDescription: "<span class='text-blue-600 font-extrabold text-xl'>ResolMATH</span>, un proyecto en desarrollo destinado a ayudar a escolares, estudiantes y entusiastas de las matemáticas a comprender y resolver, paso a paso, una gran variedad de problemas matemáticos: ecuaciones, matrices, trigonométrie y mucho más.",
                 resolmathNotification: "¿Le gustaría ser uno de los primeros en ser informado del lanzamiento oficial de ResolMath versión 1.0.0 en septiembre?",
                 clickHere: "Haz clic aquí",
                 
                 // Team section
                 teamTitle: "Nuestro Equipo",
                 teamSubtitle: "Conoce a los expertos apasionados que dan vida a tus proyectos",
+                victoriaWilliamsName: "Victoria Williams",
+                jeanDupontName: "Jean Dupont",
                 ceoTitle: "CEO y Fundadora",
                 ceoDesc: "Experta en estrategia empresarial con 15 años de experiencia",
                 ctoTitle: "Director Técnico",
                 ctoDesc: "Arquitecto de software apasionado por la innovación tecnológica",
                 otherMembers: "Otros miembros",
+                davidName: "AGANZE NAMEGABE David",
                 legalDirector: "Director Jurídico",
+                projetName: "NDAGANO BARHAZIGIRANDI Projet",
                 webDirector: "Director Web",
+                plamediName: "NDONDE MAHINDUZI Plamedi",
                 externalMobilizationDirector: "Director de Movilización Externa y Comunicación",
+                sylvainName: "MUKUBIZA MUNGUAMPIRE Sylvain",
                 trainingDirector: "Director de Formación",
+                pause: "Pausa",
+                imagePlaceholder: "Imagen",
 
                 // Contact section
                 contactTitle: "Contáctanos",
@@ -807,6 +893,53 @@
         };
 
         // Language switching functionality
+        let currentTextIndex = 0;
+        let rotationInterval = null;
+        let textElement = document.getElementById("rotating-text");
+
+        function setInitialText(lang) {
+            const originalText = translations[lang].heroSubtitle;
+            textElement.innerHTML = originalText;
+            textElement.classList.remove("fade-out", "fade-in");
+            currentTextIndex = 0;
+        }
+
+        function rotateHeroText() {
+            const lang = localStorage.getItem('selectedLanguage') || 'fr';
+            const texts = translations[lang].rotatingTexts;
+
+            if (currentTextIndex === 0) {
+                // This is the first rotation, so we need to wait for the first text to be displayed
+                // Then we start the animation and set the first rotating text
+                textElement.classList.add("fade-out");
+                setTimeout(() => {
+                    textElement.textContent = texts[0];
+                    textElement.classList.remove("fade-out");
+                    textElement.classList.add("fade-in");
+                    setTimeout(() => {
+                        textElement.classList.remove("fade-in");
+                    }, 1500);
+                    currentTextIndex = 1;
+                }, 1500);
+            } else {
+                // Subsequent rotations with fade effect
+                textElement.classList.add("fade-out");
+                setTimeout(() => {
+                    const textIndex = (currentTextIndex - 1) % texts.length;
+                    textElement.textContent = texts[textIndex];
+                    
+                    textElement.classList.remove("fade-out");
+                    textElement.classList.add("fade-in");
+                    
+                    setTimeout(() => {
+                        textElement.classList.remove("fade-in");
+                    }, 1500);
+                    
+                    currentTextIndex = (currentTextIndex + 1) % (texts.length + 1);
+                }, 1500);
+            }
+        }
+
         function switchLanguage(lang) {
             const t = translations[lang];
             
@@ -815,8 +948,10 @@
             document.querySelectorAll('[data-key]').forEach(element => {
                 const key = element.getAttribute('data-key');
                 if (key && t[key]) {
-                    if (key === 'heroTitle' || key === 'heroSubtitle' || key === 'resolmathDescription') {
+                    if (key === 'heroTitle' || key === 'resolmathDescription') {
                         element.innerHTML = `${t[key]}`;
+                    } else if (key === 'heroSubtitle') {
+                        // Handled separately by the rotation function
                     } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                         element.placeholder = t[key];
                     } else {
@@ -840,7 +975,14 @@
             if (sendButton) {
                 sendButton.textContent = t.sendAMessage;
             }
-            
+
+            // Reset and start the rotation with the initial text first
+            if (rotationInterval) {
+                clearInterval(rotationInterval);
+            }
+            setInitialText(lang);
+            rotationInterval = setInterval(rotateHeroText, 12000);
+
             localStorage.setItem('selectedLanguage', lang);
         }
 
@@ -915,14 +1057,15 @@
                 teamSwiper.on('autoplayPause', () => {
                     const pauseBtn = pauseButtonContainer.querySelector('.pause-btn');
                     if (pauseBtn) {
-                        pauseBtn.textContent = 'Play';
+                        pauseBtn.textContent = translations[localStorage.getItem('selectedLanguage') || 'fr'].pause;
+                        
                     }
                 });
 
                 teamSwiper.on('autoplayResume', () => {
                     const pauseBtn = pauseButtonContainer.querySelector('.pause-btn');
                     if (pauseBtn) {
-                        pauseBtn.textContent = 'Pause';
+                        pauseBtn.textContent = translations[localStorage.getItem('selectedLanguage') || 'fr'].pause;
                     }
                 });
             }
