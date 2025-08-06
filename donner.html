@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Soutenez la Fondation VickyWork">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <title>VickyWork</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-bg {
+            background-color: #0056b3;
+            background: repeating-linear-gradient(
+                30deg,
+                #0056b3,
+                black
+            );
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-in {
+            animation: slideIn 0.8s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @media (max-width: 640px) {
+            .hover-scale:hover {
+                transform: none;
+            }
+        }
+        
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        button, a, select {
+            min-height: 44px;
+            min-width: 44px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+            <div class="flex justify-between items-center py-3 sm:py-4">
+                <div class="flex items-center flex-shrink-0">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg sm:text-xl">VW</span>
+                    </div>
+                    <span class="ml-2 sm:ml-3 text-lg sm:text-2xl font-bold text-gray-800 truncate">VickyWork</span>
+                </div>
+
+                <nav class="hidden lg:flex space-x-6 xl:space-x-8">
+                    <a href="index.html#accueil" data-key="home" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 whitespace-nowrap">Accueil</a>
+                    <a href="index.html#qui-sommes-nous" data-key="about" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 whitespace-nowrap">Qui sommes-nous</a>
+                    <a href="index.html#nos-projets" data-key="ourProjects" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 whitespace-nowrap">Nos projets</a>
+                    <a href="index.html#portfolio" data-key="portfolio" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 whitespace-nowrap">Portfolio</a>
+                    <a href="index.html#equipe" data-key="team" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 whitespace-nowrap">Notre équipe</a>
+                    <a href="index.html#contact" data-key="contact" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 whitespace-nowrap">Contact</a>
+                    <a href="#don" data-key="support" class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-3 py-2 xl:px-4 rounded-lg hover:shadow-lg transition-all duration-300 whitespace-nowrap text-sm xl:text-base">Soutenez-Nous</a>
+                </nav>
+
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <div class="hidden sm:block">
+                        <select id="desktop-lang-select" class="bg-gray-100 border border-gray-300 rounded-lg px-2 py-2 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-0">
+                            <option value="fr">🇫🇷 FR</option>
+                            <option value="en">🇺🇸 EN</option>
+                            <option value="es">🇪🇸 ES</option>
+                        </select>
+                    </div>
+
+                    <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300 flex-shrink-0">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="lg:hidden bg-white border-t border-gray-200 hidden shadow-lg">
+            <div class="px-4 py-3 space-y-1 max-h-96 overflow-y-auto">
+                <a href="index.html#accueil" data-key="home" class="block py-3 px-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium rounded-lg transition-all duration-300">Accueil</a>
+                <a href="index.html#qui-sommes-nous" data-key="about" class="block py-3 px-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium rounded-lg transition-all duration-300">Qui sommes-nous</a>
+                <a href="index.html#nos-projets" data-key="ourProjects" class="block py-3 px-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium rounded-lg transition-all duration-300">Nos projets</a>
+                <a href="index.html#portfolio" data-key="portfolio" class="block py-3 px-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium rounded-lg transition-all duration-300">Portfolio</a>
+                <a href="index.html#equipe" data-key="team" class="block py-3 px-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium rounded-lg transition-all duration-300">Notre équipe</a>
+                <a href="index.html#contact" data-key="contact" class="block py-3 px-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium rounded-lg transition-all duration-300">Contact</a>
+                <a href="#don" data-key="support" class="block py-3 px-2 text-blue-600 hover:bg-blue-50 font-medium rounded-lg transition-all duration-300">Soutenez-Nous</a>
+                
+                <div class="sm:hidden pt-2 border-t border-gray-200 mt-2">
+                    <select id="mobile-lang-select" class="w-full bg-gray-100 border border-gray-300 rounded-lg px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="fr">🇫🇷 Français</option>
+                        <option value="en">🇺🇸 English</option>
+                        <option value="es">🇪🇸 Español</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-16 sm:pt-20">
+        <section id="don" class="py-12 sm:py-16 lg:py-20 bg-gray-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="fade-in">
+                    <h1 data-key="supportTitle" class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-gray-800 mb-4 sm:mb-6 leading-tight">
+                        Soutenez la <span class="text-gradient">Fondation VickyWork</span>
+                    </h1>
+                    <p data-key="supportSubtitle" class="text-lg sm:text-xl md:text-2xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
+                        Donnez pour transformer des vies
+                    </p>
+
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200">
+                        <p data-key="supportQuote" class="text-base sm:text-lg text-gray-600 mb-6 leading-relaxed italic">
+                            "Chaque don est une étincelle d’espoir. En soutenant la Fondation VICKYWORK, vous participez à la construction d’un avenir meilleur, plus éduqué, plus numérique, et plus solidaire pour les jeunes et les communautés que nous servons."
+                        </p>
+
+                        <div class="text-left mb-6">
+                            <p data-key="impactTitle" class="font-bold text-lg sm:text-xl text-gray-800 mb-3">L'impact de vos Dons:</p>
+                            <ul class="list-none space-y-3 text-base sm:text-lg text-gray-600">
+                                <li class="flex items-start">
+                                    <span class="mr-3 text-blue-500 flex-shrink-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    </span>
+                                    <span data-key="impactPoint1">Vous aidez à former des jeunes aux compétences numériques.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-3 text-blue-500 flex-shrink-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    </span>
+                                    <span data-key="impactPoint2">Vous contribuez au développement de plateformes éducatives accessibles.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-3 text-blue-500 flex-shrink-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    </span>
+                                    <span data-key="impactPoint3">Vous soutenez des projets concrets qui changent la vie des familles.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <p data-key="everyDonationCounts" class="text-base sm:text-lg text-gray-600 mb-8 italic">
+                            Que vous donniez 1$, 5$, 50$ ou plus… chaque geste compte et fait avancer notre mission.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-gray-100 p-6 rounded-xl hover:shadow-lg transition-shadow duration-300">
+                                <h2 data-key="airtel" class="text-xl font-bold text-gray-800 mb-2">Airtel</h2>
+                                <p class="text-lg text-gray-600">+243996970424</p>
+                            </div>
+                            <div class="bg-gray-100 p-6 rounded-xl hover:shadow-lg transition-shadow duration-300">
+                                <h2 data-key="orange" class="text-xl font-bold text-gray-800 mb-2">Orange</h2>
+                                <p class="text-lg text-gray-600">+243896916037</p>
+                            </div>
+                            <div class="bg-gray-100 p-6 rounded-xl hover:shadow-lg transition-shadow duration-300">
+                                <h2 data-key="vodacom" class="text-xl font-bold text-gray-800 mb-2">Vodacom</h2>
+                                <p class="text-lg text-gray-600">+243835119601</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 sm:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <div class="sm:col-span-2 lg:col-span-1">
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-sm sm:text-base">VW</span>
+                        </div>
+                        <span class="ml-3 text-lg sm:text-xl font-bold">VickyWork</span>
+                    </div>
+                    <p data-key="footerDesc" class="text-gray-400 text-sm sm:text-base leading-relaxed">Votre partenaire de confiance pour tous vos projets professionnels.</p>
+                </div>
+                
+                <div>
+                    <h4 data-key="servicesFooter" class="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm sm:text-base">
+                        <li><a href="#" data-key="consultation" class="hover:text-white transition-colors duration-300 block py-1">Consultation</a></li>
+                        <li><a href="#" data-key="development" class="hover:text-white transition-colors duration-300 block py-1">Développement</a></li>
+                        <li><a href="#" data-key="support" class="hover:text-white transition-colors duration-300 block py-1">Support</a></li>
+                        <li><a href="#" data-key="training" class="hover:text-white transition-colors duration-300 block py-1">Formation</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 data-key="company" class="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Entreprise</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm sm:text-base">
+                        <li><a href="#" data-key="about" class="hover:text-white transition-colors duration-300 block py-1">À propos</a></li>
+                        <li><a href="#" data-key="teamFooter" class="hover:text-white transition-colors duration-300 block py-1">Équipe</a></li>
+                        <li><a href="#" data-key="careers" class="hover:text-white transition-colors duration-300 block py-1">Carrières</a></li>
+                        <li><a href="#" data-key="blog" class="hover:text-white transition-colors duration-300 block py-1">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sm:col-span-2 lg:col-span-1">
+                    <h4 data-key="followUs" class="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Suivez-nous</h4>
+                    <div class="flex space-x-3 sm:space-x-4">
+                        <a href="#" class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700 rounded-lg flex items-center justify-center hover:bg-blue-500 transition-colors duration-300">
+                            <span class="text-base sm:text-lg">📘</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700 rounded-lg flex items-center justify-center hover:bg-blue-500 transition-colors duration-300">
+                            <span class="text-base sm:text-lg">🐦</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700 rounded-lg flex items-center justify-center hover:bg-blue-500 transition-colors duration-300">
+                            <span class="text-base sm:text-lg">💼</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-400">
+                <p data-key="copyright" class="text-sm sm:text-base">&copy; 2024 VickyWork. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Language translations
+        const translations = {
+            fr: {
+                // Header
+                home: "Accueil",
+                about: "Qui sommes-nous",
+                ourProjects: "Nos projets",
+                portfolio: "Portfolio",
+                team: "Notre équipe",
+                contact: "Contact",
+                support: "Soutenez-Nous",
+                
+                // Support section
+                supportTitle: "Soutenez la Fondation VickyWork",
+                supportSubtitle: "Donnez pour transformer des vies",
+                supportQuote: "\"Chaque don est une étincelle d’espoir. En soutenant la Fondation VICKYWORK, vous participez à la construction d’un avenir meilleur, plus éduqué, plus numérique, et plus solidaire pour les jeunes et les communautés que nous servons.\"",
+                impactTitle: "L'impact de vos Dons:",
+                impactPoint1: "Vous aidez à former des jeunes aux compétences numériques.",
+                impactPoint2: "Vous contribuez au développement de plateformes éducatives accessibles.",
+                impactPoint3: "Vous soutenez des projets concrets qui changent la vie des familles.",
+                everyDonationCounts: "Que vous donniez 1$, 5$, 50$ ou plus… chaque geste compte et fait avancer notre mission.",
+                airtel: "Airtel",
+                orange: "Orange",
+                vodacom: "Vodacom",
+                
+                // Footer
+                footerDesc: "Votre partenaire de confiance pour tous vos projets professionnels.",
+                servicesFooter: "Services",
+                consultation: "Consultation",
+                development: "Développement",
+                support: "Support",
+                training: "Formation",
+                company: "Entreprise",
+                aboutFooter: "À propos",
+                teamFooter: "Équipe",
+                careers: "Carrières",
+                blog: "Blog",
+                followUs: "Suivez-nous",
+                copyright: "© 2024 VickyWork. Tous droits réservés."
+            },
+            en: {
+                // Header
+                home: "Home",
+                about: "About Us",
+                ourProjects: "Our Projects",
+                portfolio: "Portfolio",
+                team: "Our Team",
+                contact: "Contact",
+                support: "Support Us",
+                
+                // Support section
+                supportTitle: "Support the VickyWork Foundation",
+                supportSubtitle: "Donate to transform lives",
+                supportQuote: "\"Every donation is a spark of hope. By supporting the VICKYWORK Foundation, you participate in building a better, more educated, more digital, and more supportive future for the youth and communities we serve.\"",
+                impactTitle: "The Impact of Your Donations:",
+                impactPoint1: "You help train young people in digital skills.",
+                impactPoint2: "You contribute to the development of accessible educational platforms.",
+                impactPoint3: "You support concrete projects that change the lives of families.",
+                everyDonationCounts: "Whether you donate $1, $5, $50, or more... every gesture counts and advances our mission.",
+                airtel: "Airtel",
+                orange: "Orange",
+                vodacom: "Vodacom",
+
+                // Footer
+                footerDesc: "Your trusted partner for all your professional projects.",
+                servicesFooter: "Services",
+                consultation: "Consultation",
+                development: "Development",
+                support: "Support",
+                training: "Training",
+                company: "Company",
+                aboutFooter: "About",
+                teamFooter: "Team",
+                careers: "Careers",
+                blog: "Blog",
+                followUs: "Follow Us",
+                copyright: "© 2024 VickyWork. All rights reserved."
+            },
+            es: {
+                // Header
+                home: "Inicio",
+                about: "Quiénes somos",
+                ourProjects: "Nuestros proyectos",
+                portfolio: "Portafolio",
+                team: "Nuestro Equipo",
+                contact: "Contacto",
+                support: "Apóyanos",
+                
+                // Support section
+                supportTitle: "Apoya a la Fundación VickyWork",
+                supportSubtitle: "Dona para transformar vidas",
+                supportQuote: "\"Cada donación es una chispa de esperanza. Al apoyar a la Fundación VICKYWORK, participas en la construcción de un futuro mejor, más educado, más digital y más solidario para los jóvenes y las comunidades a las que servimos.\"",
+                impactTitle: "El Impacto de tus Donaciones:",
+                impactPoint1: "Ayudas a formar a jóvenes en habilidades digitales.",
+                impactPoint2: "Contribuyes al desarrollo de plataformas educativas accesibles.",
+                impactPoint3: "Apoyas proyectos concretos que cambian la vida de las familias.",
+                everyDonationCounts: "Ya sea que dones $1, $5, $50 o más... cada gesto cuenta y hace avanzar nuestra misión.",
+                airtel: "Airtel",
+                orange: "Orange",
+                vodacom: "Vodacom",
+                
+                // Footer
+                footerDesc: "Tu socio de confianza para todos tus proyectos profesionales.",
+                servicesFooter: "Servicios",
+                consultation: "Consultoría",
+                development: "Desarrollo",
+                support: "Soporte",
+                training: "Formación",
+                company: "Empresa",
+                aboutFooter: "Acerca de",
+                teamFooter: "Equipo",
+                careers: "Carreras",
+                blog: "Blog",
+                followUs: "Síguenos",
+                copyright: "© 2024 VickyWork. Todos los derechos reservados."
+            }
+        };
+
+        // Language switching functionality
+        function switchLanguage(lang) {
+            const t = translations[lang];
+            
+            document.documentElement.lang = lang;
+            
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (key && t[key]) {
+                    if (key === 'supportTitle') {
+                        element.innerHTML = `${t.supportTitle.replace('VickyWork', '')} <span class="text-gradient">VickyWork</span>`;
+                    } else if (key === 'supportQuote' || key === 'everyDonationCounts' || key === 'impactPoint1' || key === 'impactPoint2' || key === 'impactPoint3') {
+                        element.textContent = t[key].replace(/<\/?span[^>]*>/g, '');
+                    } else {
+                        element.textContent = t[key];
+                    }
+                }
+            });
+            
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        // Language selector functionality
+        document.querySelectorAll('select').forEach(select => {
+            select.addEventListener('change', function(e) {
+                const selectedLang = e.target.value;
+                switchLanguage(selectedLang);
+                
+                document.querySelectorAll('select').forEach(otherSelect => {
+                    otherSelect.value = selectedLang;
+                });
+            });
+        });
+
+        // Load saved language on page load, defaulting to French
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('selectedLanguage') || 'fr';
+            document.querySelectorAll('select').forEach(select => {
+                select.value = savedLang;
+            });
+            switchLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
